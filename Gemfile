@@ -8,15 +8,20 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.3'
+gem 'rails', '~> 7.2'
+# Ruby 3.4 removed these from default gems; activesupport still requires them
+gem 'mutex_m'
+gem 'bigdecimal'
+# json 3.x dropped the quirks_mode: kwarg that activesupport 7.2's JSON coder still passes
+gem 'json', '< 3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'puma', '~> 6.4'
+# Use SCSS for stylesheets (Dart Sass via Sprockets; libsass/sassc-rails is EOL)
+gem 'dartsass-sprockets'
+# Use Terser as compressor for JavaScript assets (uglifier can't handle ES6)
+gem 'terser'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -27,7 +32,7 @@ gem 'activeadmin'
 gem 'devise'
 
 gem 'auto_strip_attributes'
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.3'
 gem 'jquery-rails'
 gem 'rack-canonical-host'
 gem 'recaptcha', require: 'recaptcha/rails'
@@ -44,7 +49,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.3'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
