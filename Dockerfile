@@ -1,7 +1,7 @@
-FROM ruby:2.7.1
+FROM ruby:3.4-trixie
 
 RUN apt-get update -qq &&\
-  curl -sL https://deb.nodesource.com/setup_10.x | bash - &&\
+  curl -sL https://deb.nodesource.com/setup_22.x | bash - &&\
   apt-get install -y build-essential libpq-dev nodejs &&\
   useradd --user-group --create-home --shell /bin/false app
 
